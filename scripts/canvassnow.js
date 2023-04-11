@@ -1,23 +1,19 @@
 // load the content first and then run the onload function
 
-window.onresize = function() { 
-    location.reload(); 
-  }
 
 window.onload = function () {
+  window.onresize = () =>  location.reload();
   // declare the canvas object and get the context
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext("2d");
-
-  // set the width and height of the window
-  let W = window.innerWidth;
-  let H = window.innerHeight;
-  // appliy the width and height to the canvas
+  const W = window.innerWidth;
+  const H = window.innerHeight;
   canvas.width = W;
   canvas.height = H;
-
   const objectNumber = 300;
   const objectArray = [];
+  let angle = 0;
+
   // loop through the number of objects and push objects into array
   for (let i = 0; i < objectNumber; i++) {
     objectArray.push({
@@ -42,8 +38,7 @@ window.onload = function () {
     ctx.fill();
     moveObjects();
   }
-  let angle = 0;
-// using cos and sin to float between -1 to 1
+
   function moveObjects() {
     angle += 0.01;
     for (let i = 0; i < objectNumber; i++) {
